@@ -716,40 +716,103 @@ The project is currently in Phase 3 (DApp Construction), with significant progre
 
 ```
 ARIA/
+│
 ├── README.md                    # Project overview and documentation
-├── docs/                        # Documentation
-│   ├── whitepaper.md            # Detailed project description
-│   └── tokenomics.md            # Token economics specifications
-├── contract/                    # Solana smart contracts
-│   ├── Cargo.toml               # Rust dependencies
-│   └── src/
-│       └── lib.rs               # Token contract implementation
+├── LICENSE                      # MIT license
+├── PROJECT_SUMMARY.md           # Project summary
+├── DATE_UPDATE_REPORT.md        # Date update report
+├── GITHUB_SETUP.md              # GitHub setup guide
+├── docker-compose.yml           # Docker configuration
+│
+├── .github/                     # GitHub related configuration
+│   └── workflows/               # GitHub Actions workflows
+│       └── ci.yml               # CI/CD pipeline configuration
+│
+├── assets/                      # Static assets
+│   ├── logo.svg                 # Project logo
+│   └── diagrams/                # Diagrams directory
+│       ├── architecture.svg     # Architecture diagram
+│       ├── data-flow.svg        # Data flow diagram
+│       └── models-integration.svg # AI models integration diagram
+│
+├── docs/                        # Documentation directory
+│   ├── whitepaper.md            # Whitepaper
+│   ├── tokenomics.md            # Token economics
+│   ├── installation.md          # Installation guide
+│   ├── security_audit.md        # Security audit
+│   ├── index.md                 # Documentation index
+│   ├── android_architecture.md  # Android architecture document
+│   └── en/                      # English documentation
+│
 ├── app/                         # Android application
 │   ├── build.gradle             # Project-level build file
 │   ├── settings.gradle          # Project settings
-│   └── app/
+│   └── app/                     # App module
 │       ├── build.gradle         # App-level build file
+│       ├── proguard-rules.pro   # Proguard rules
 │       └── src/
 │           └── main/
-│               ├── java/        # Kotlin source files
-│               ├── res/         # Android resources
-│               └── AndroidManifest.xml
-├── frontend/                    # Web frontend (React)
-│   ├── package.json             # NPM dependencies
-│   ├── public/                  # Static assets
-│   └── src/                     # React components and logic
+│               ├── java/com/aria/app/  # Main code directory
+│               │   ├── ARIAApplication.kt   # Application class
+│               │   ├── ui/             # UI components
+│               │   │   ├── MainActivity.kt  # Main activity
+│               │   │   └── settings/   # Settings screens
+│               │   │       ├── LanguageSelectionScreen.kt  # Language selection screen
+│               │   │       ├── LanguageSettingsViewModel.kt # Language settings view model
+│               │   │       ├── SettingsScreen.kt    # Settings screen
+│               │   │       └── SettingsViewModel.kt # Settings view model
+│               │   └── utils/          # Utility classes
+│               │       └── LocaleHelper.kt    # Language settings helper
+│               ├── res/                # Resource files
+│               │   ├── values/         # Default resource values
+│               │   │   └── strings.xml # String resources
+│               │   ├── values-zh/      # Chinese resources
+│               │   │   └── strings.xml # Chinese string resources
+│               │   ├── values-es/      # Spanish resources (placeholder)
+│               │   ├── values-fr/      # French resources (placeholder)
+│               │   └── values-ja/      # Japanese resources (placeholder)
+│               └── AndroidManifest.xml # App manifest
+│
 ├── backend/                     # Node.js backend server
 │   ├── package.json             # NPM dependencies
 │   └── src/                     # Server-side code
 │       ├── controllers/         # API controllers
+│       │   ├── user.controller.js
+│       │   ├── token.controller.js
+│       │   └── solana.controller.js
 │       ├── routes/              # API routes
 │       ├── middleware/          # Express middleware
+│       ├── services/            # Service layer
+│       │   └── ai/              # AI services
+│       │       ├── openai.service.js   # OpenAI integration
+│       │       ├── deepseek.service.js # DeepSeek integration
+│       │       └── anthropic.service.js # Anthropic integration
 │       ├── utils/               # Utility functions
 │       └── index.js             # Server entry point
-├── scripts/                     # Deployment and utility scripts
-│   ├── deploy_token.js          # Token deployment script
-│   └── pump_fun_listing.js      # pump.fun listing setup
-└── docker-compose.yml           # Docker configuration
+│
+├── frontend/                    # Web frontend (React)
+│   ├── package.json             # NPM dependencies
+│   ├── public/                  # Static assets
+│   └── src/                     # React components and logic
+│       ├── components/          # UI components
+│       ├── pages/               # Page components
+│       │   └── DashboardPage.js # Dashboard page
+│       ├── services/            # Services
+│       └── utils/               # Utility functions
+│
+├── contract/                    # Solana smart contracts
+│   ├── Cargo.toml               # Rust dependencies
+│   ├── README.md                # Contract documentation
+│   └── src/                     # Contract source code
+│       └── lib.rs               # Token contract implementation
+│
+├── server/                      # Other server components
+│
+└── scripts/                     # Scripts directory
+    ├── deploy_token.js          # Token deployment script
+    ├── pump_fun_listing.js      # pump.fun listing script
+    ├── test_token_devnet.js     # Devnet test script
+    └── temp/                    # Temporary files
 ```
 
 ## Getting Started

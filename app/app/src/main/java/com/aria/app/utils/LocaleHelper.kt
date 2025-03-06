@@ -22,8 +22,8 @@ class LocaleHelper {
             "en" to "English",
             "es" to "Español",
             "fr" to "Français",
-            "ja" to "日本語",
-            "zh" to "中文"
+            "ja" to "Japanese",
+            "zh" to "Chinese"
         )
         
         /**
