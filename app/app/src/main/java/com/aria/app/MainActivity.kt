@@ -33,17 +33,19 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     private lateinit var solanaService: SolanaService
+    private lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Initialize Solana service
+        // Initialize services
         solanaService = SolanaService()
         solanaService.initializeWalletAdapter(this)
+        apiService = ApiService()
         
         setContent {
             MaterialTheme {
-                MainScreen(solanaService)
+                MainScreen(solanaService, apiService)
             }
         }
     }
@@ -53,15 +55,31 @@ class MainActivity : ComponentActivity() {
  * Main screen composable
  */
 @Composable
-fun MainScreen(solanaService: SolanaService) {
+fun MainScreen(solanaService: SolanaService, apiService: ApiService) {
     val navController = rememberNavController()
     
     // Wallet connection state
     var isWalletConnected by remember { mutableStateOf(false) }
     var walletPublicKey by remember { mutableStateOf<PublicKey?>(null) }
+    var authToken by remember { mutableStateOf<String?>(null) }
     
     // Bottom navigation state
     var selectedTab by remember { mutableStateOf(0) }
+    
+    // Handle wallet verification and token setting
+    LaunchedEffect(isWalletConnected, walletPublicKey) {
+        if (isWalletConnected && walletPublicKey != null && authToken == null) {
+            try {
+                val token = apiService.verifyWallet(walletPublicKey!!.toBase58())
+                if (token != null) {
+                    authToken = token
+                    apiService.setAuthToken(token)
+                }
+            } catch (e: Exception) {
+                // Handle error, but don't block the UI
+            }
+        }
+    }
     
     Scaffold(
         topBar = {
@@ -74,6 +92,8 @@ fun MainScreen(solanaService: SolanaService) {
                             solanaService.disconnectWallet()
                             isWalletConnected = false
                             walletPublicKey = null
+                            authToken = null
+                            apiService.setAuthToken(null)
                         }) {
                             Icon(Icons.Filled.ExitToApp, contentDescription = stringResource(R.string.disconnect_wallet))
                         }
@@ -142,7 +162,7 @@ fun MainScreen(solanaService: SolanaService) {
             }
             
             composable("chat") {
-                ChatScreen()
+                ChatScreen(apiService, isWalletConnected)
             }
             
             composable("settings") {
@@ -382,21 +402,46 @@ fun WalletScreen(
 }
 
 /**
- * Chat screen composable (simplified for MVP)
+ * Chat screen composable with API integration
  */
 @Composable
-fun ChatScreen() {
+fun ChatScreen(apiService: ApiService, isWalletConnected: Boolean) {
     val messages = remember { mutableStateListOf(
         Message("ARIA", stringResource(R.string.welcome_message))
     ) }
     
     var newMessage by remember { mutableStateOf("") }
+    var isLoading by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val messagesEndRef = remember { mutableStateOf<Unit?>(null) }
+    
+    // Auto-scroll to bottom when messages change
+    LaunchedEffect(messages.size) {
+        messagesEndRef.value = Unit // Trigger recomposition of the referenced element
+    }
     
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Chat header with login prompt if not connected
+        if (!isWalletConnected) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                backgroundColor = Color(0xFFF8F0E3)
+            ) {
+                Text(
+                    text = "Connect your wallet for a personalized chat experience and to earn ARI tokens!",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.body2
+                )
+            }
+        }
+        
         // Chat messages
         Box(
             modifier = Modifier
@@ -410,6 +455,25 @@ fun ChatScreen() {
                     MessageBubble(message)
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+                
+                // Show typing indicator when loading
+                if (isLoading) {
+                    Row(
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(start = 16.dp, bottom = 8.dp)
+                    ) {
+                        TypingIndicator()
+                    }
+                }
+                
+                // Reference for auto-scrolling
+                Box(modifier = Modifier.onGloballyPositioned {
+                    // This gets called after layout
+                    messagesEndRef.value?.let {
+                        it // Access to trigger recomposition
+                    }
+                })
             }
         }
         
@@ -424,7 +488,8 @@ fun ChatScreen() {
                 value = newMessage,
                 onValueChange = { newMessage = it },
                 modifier = Modifier.weight(1f),
-                placeholder = { Text(stringResource(R.string.type_message)) }
+                placeholder = { Text(stringResource(R.string.type_message)) },
+                enabled = !isLoading
             )
             
             Spacer(modifier = Modifier.width(8.dp))
@@ -432,18 +497,120 @@ fun ChatScreen() {
             Button(
                 onClick = {
                     if (newMessage.isNotEmpty()) {
-                        messages.add(Message("User", newMessage))
+                        // Add user message
+                        val userMessage = Message("User", newMessage)
+                        messages.add(userMessage)
                         
-                        // Simulate AI response for MVP
-                        messages.add(Message("ARIA", "I'm here to help with your AI and crypto needs! This is a simplified MVP demonstration."))
-                        
+                        // Store message to send and clear input field
+                        val messageToSend = newMessage
                         newMessage = ""
+                        isLoading = true
+                        
+                        // Call API to get AI response
+                        coroutineScope.launch {
+                            try {
+                                val response = apiService.sendChatMessage(messageToSend)
+                                messages.add(Message("ARIA", response))
+                            } catch (e: Exception) {
+                                Toast.makeText(
+                                    context,
+                                    "Error: ${e.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                messages.add(Message("ARIA", "Sorry, I encountered an error. Please try again."))
+                            } finally {
+                                isLoading = false
+                            }
+                        }
                     }
-                }
+                },
+                enabled = !isLoading && newMessage.isNotEmpty()
             ) {
                 Icon(Icons.Filled.Send, contentDescription = stringResource(R.string.send))
             }
         }
+    }
+}
+
+/**
+ * Typing indicator animation for chat
+ */
+@Composable
+fun TypingIndicator() {
+    Row(
+        modifier = Modifier
+            .background(
+                color = Color(0xFFE0E0E0),
+                shape = MaterialTheme.shapes.medium
+            )
+            .padding(horizontal = 12.dp, vertical = 8.dp)
+    ) {
+        val dotSize = 8.dp
+        val dotColor = Color.Gray
+        
+        // First dot with animation
+        val firstDotAlpha by animateFloatAsState(
+            targetValue = 0.3f,
+            animationSpec = infiniteRepeatable(
+                animation = keyframes {
+                    durationMillis = 1500
+                    0.7f at 0
+                    0.9f at 300
+                    0.3f at 600
+                }
+            )
+        )
+        
+        // Second dot with animation
+        val secondDotAlpha by animateFloatAsState(
+            targetValue = 0.3f,
+            animationSpec = infiniteRepeatable(
+                animation = keyframes {
+                    durationMillis = 1500
+                    0.3f at 0
+                    0.7f at 300
+                    0.9f at 600
+                    0.3f at 900
+                }
+            )
+        )
+        
+        // Third dot with animation
+        val thirdDotAlpha by animateFloatAsState(
+            targetValue = 0.3f,
+            animationSpec = infiniteRepeatable(
+                animation = keyframes {
+                    durationMillis = 1500
+                    0.3f at 0
+                    0.3f at 300
+                    0.7f at 600
+                    0.9f at 900
+                    0.3f at 1200
+                }
+            )
+        )
+        
+        Box(
+            modifier = Modifier
+                .size(dotSize)
+                .background(dotColor.copy(alpha = firstDotAlpha), shape = CircleShape)
+        )
+        
+        Spacer(modifier = Modifier.width(4.dp))
+        
+        Box(
+            modifier = Modifier
+                .size(dotSize)
+                .background(dotColor.copy(alpha = secondDotAlpha), shape = CircleShape)
+        )
+        
+        Spacer(modifier = Modifier.width(4.dp))
+        
+        Box(
+            modifier = Modifier
+                .size(dotSize)
+                .background(dotColor.copy(alpha = thirdDotAlpha), shape = CircleShape)
+        )
     }
 }
 
@@ -460,7 +627,19 @@ fun MessageBubble(message: Message) {
     ) {
         Card(
             modifier = Modifier.widthIn(max = 300.dp),
-            backgroundColor = if (isFromUser) Color(0xFF2196F3) else Color(0xFFE0E0E0)
+            backgroundColor = if (isFromUser) Color(0xFF2196F3) else Color(0xFFE0E0E0),
+            shape = if (isFromUser) 
+                MaterialTheme.shapes.medium.copy(
+                    topEnd = ZeroCornerSize,
+                    bottomStart = ZeroCornerSize,
+                    bottomEnd = ZeroCornerSize
+                )
+            else 
+                MaterialTheme.shapes.medium.copy(
+                    topStart = ZeroCornerSize,
+                    bottomStart = ZeroCornerSize,
+                    bottomEnd = ZeroCornerSize
+                )
         ) {
             Column(
                 modifier = Modifier.padding(12.dp)

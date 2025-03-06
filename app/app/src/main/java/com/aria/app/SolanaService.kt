@@ -7,6 +7,7 @@ import com.solana.core.Transaction
 import com.solana.networking.RPCEndpoint
 import com.solana.programs.TokenProgram
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import com.solana.mobilewalletadapter.clientlib.ActivityResultSender
 import com.solana.mobilewalletadapter.clientlib.MobileWalletAdapter
@@ -17,6 +18,7 @@ import com.solana.networking.serialization.serializers.solana.SolanaResponseSeri
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
+import java.math.BigDecimal
 
 /**
  * Service class that handles interactions with the Solana blockchain
@@ -29,6 +31,10 @@ class SolanaService(
     private val router = HttpNetworkingRouter(endpoint.url, SolanaResponseSerializer())
     private var walletAdapter: MobileWalletAdapter? = null
     private var connectedPublicKey: PublicKey? = null
+    
+    // Mock wallet data
+    private var connectedWallet: String? = null
+    private val mockBalance = BigDecimal("5.89")
     
     /**
      * Initialize the wallet adapter for connection to Solana wallets
@@ -74,6 +80,7 @@ class SolanaService(
     fun disconnectWallet() {
         walletAdapter?.disconnect()
         connectedPublicKey = null
+        connectedWallet = null
     }
     
     /**
@@ -115,9 +122,9 @@ class SolanaService(
             // In a real implementation, this would fetch actual transactions
             // For MVP, we'll return mock data
             listOf(
-                AriaTransaction("Transfer", 100.0, "2023-04-15T10:30:00Z", "Received"),
-                AriaTransaction("Transfer", -25.5, "2023-04-13T15:45:00Z", "Sent"),
-                AriaTransaction("Staking", 5.25, "2023-04-10T09:15:00Z", "Reward")
+                AriaTransaction("Transfer", 100.0, "2024-11-15T10:30:00Z", "Received"),
+                AriaTransaction("Transfer", -25.5, "2024-11-13T15:45:00Z", "Sent"),
+                AriaTransaction("Staking", 5.25, "2024-11-10T09:15:00Z", "Reward")
             )
         } catch (e: Exception) {
             Log.e(TAG, "Error getting transaction history: ${e.message}")
@@ -141,6 +148,151 @@ class SolanaService(
             // Return mock data for MVP
             0.5
         }
+    }
+    
+    /**
+     * Connect to a wallet
+     * @param walletAddress The wallet address to connect to
+     * @return Connection result
+     */
+    suspend fun connectWallet(walletAddress: String): Result<String> = withContext(Dispatchers.IO) {
+        // Simulate network delay
+        delay(1000)
+        
+        // Validate wallet address format (simplified check)
+        if (!walletAddress.matches(Regex("^[A-Za-z0-9]{32,44}$"))) {
+            return@withContext Result.failure(Exception("Invalid wallet address format"))
+        }
+        
+        // In a real implementation, we would verify wallet ownership
+        // through a signature challenge
+        
+        connectedWallet = walletAddress
+        Result.success(walletAddress)
+    }
+    
+    /**
+     * Get wallet balance
+     * @return Wallet balance in SOL
+     */
+    suspend fun getWalletBalance(): Result<BigDecimal> = withContext(Dispatchers.IO) {
+        if (connectedWallet == null) {
+            return@withContext Result.failure(Exception("No wallet connected"))
+        }
+        
+        // Simulate network delay
+        delay(800)
+        
+        // In a real implementation, we would query the Solana blockchain
+        // for the actual wallet balance
+        
+        Result.success(mockBalance)
+    }
+    
+    /**
+     * Get current ARI token balance
+     * @return Token balance
+     */
+    suspend fun getTokenBalance(): Result<BigDecimal> = withContext(Dispatchers.IO) {
+        if (connectedWallet == null) {
+            return@withContext Result.failure(Exception("No wallet connected"))
+        }
+        
+        // Simulate network delay
+        delay(800)
+        
+        // Mock token balance
+        val balance = BigDecimal("500.25")
+        
+        // In a real implementation, we would query the token account
+        // associated with the wallet address
+        
+        Result.success(balance)
+    }
+    
+    /**
+     * Send SOL to another address
+     * @param recipient Recipient address
+     * @param amount Amount to send in SOL
+     * @return Transaction result
+     */
+    suspend fun sendSol(recipient: String, amount: BigDecimal): Result<String> = withContext(Dispatchers.IO) {
+        if (connectedWallet == null) {
+            return@withContext Result.failure(Exception("No wallet connected"))
+        }
+        
+        // Validate recipient address format (simplified check)
+        if (!recipient.matches(Regex("^[A-Za-z0-9]{32,44}$"))) {
+            return@withContext Result.failure(Exception("Invalid recipient address format"))
+        }
+        
+        // Check if amount is positive
+        if (amount <= BigDecimal.ZERO) {
+            return@withContext Result.failure(Exception("Amount must be greater than zero"))
+        }
+        
+        // Check if there's enough balance
+        if (amount > mockBalance) {
+            return@withContext Result.failure(Exception("Insufficient balance"))
+        }
+        
+        // Simulate transaction processing
+        delay(2000)
+        
+        // In a real implementation, we would create and submit a Solana transaction
+        
+        // Mock transaction signature
+        val signature = "5GGdsgHuREJQJ8V5HJnHNKfGCmtQNbUe2ix9kQi6dKRngAG4LJHdnNMrWFBy8GSBt9wFQQi1KgxTAM"
+        
+        Result.success(signature)
+    }
+    
+    /**
+     * Send ARI tokens to another address
+     * @param recipient Recipient address
+     * @param amount Amount of tokens to send
+     * @return Transaction result
+     */
+    suspend fun sendTokens(recipient: String, amount: BigDecimal): Result<String> = withContext(Dispatchers.IO) {
+        if (connectedWallet == null) {
+            return@withContext Result.failure(Exception("No wallet connected"))
+        }
+        
+        // Validate recipient address format (simplified check)
+        if (!recipient.matches(Regex("^[A-Za-z0-9]{32,44}$"))) {
+            return@withContext Result.failure(Exception("Invalid recipient address format"))
+        }
+        
+        // Check if amount is positive
+        if (amount <= BigDecimal.ZERO) {
+            return@withContext Result.failure(Exception("Amount must be greater than zero"))
+        }
+        
+        // Simulate transaction processing
+        delay(2000)
+        
+        // In a real implementation, we would create and submit a token transfer transaction
+        
+        // Mock transaction signature
+        val signature = "2Ksd9Ps3B3CJHGETUQWpFULzuR8aHnfJDTehStPMYJKx7axQnkg9GJCsLwgRicMAi7kBtH4XK32h7Uc"
+        
+        Result.success(signature)
+    }
+    
+    /**
+     * Check if wallet is connected
+     * @return True if wallet is connected
+     */
+    fun isWalletConnected(): Boolean {
+        return connectedWallet != null
+    }
+    
+    /**
+     * Get connected wallet address
+     * @return Connected wallet address or null if not connected
+     */
+    fun getConnectedWallet(): String? {
+        return connectedWallet
     }
 }
 

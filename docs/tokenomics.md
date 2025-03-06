@@ -1,167 +1,278 @@
-# ARIA Tokenomics
+# ARIA Token Economics Whitepaper
 
-## Overview
+**Version**: 1.0.0  
+**Date**: November 12, 2024  
+**Author**: ARIA Project Team
 
-The ARIA ecosystem is powered by the ARI token, a utility token built on the Solana blockchain. This document outlines the economic design of the ARI token, including distribution, utility, value accrual mechanisms, and governance.
+## Table of Contents
 
-## Token Details
+1. [Introduction](#1-introduction)
+2. [ARI Token Overview](#2-ari-token-overview)
+3. [Token Distribution](#3-token-distribution)
+4. [Token Use Cases and Utility](#4-token-use-cases-and-utility)
+5. [User Incentive Mechanisms](#5-user-incentive-mechanisms)
+6. [Token Release Schedule](#6-token-release-schedule)
+7. [Community Governance](#7-community-governance)
+8. [Economic Sustainability](#8-economic-sustainability)
+9. [Conclusion](#9-conclusion)
+
+---
+
+## 1. Introduction
+
+ARIA is a decentralized AI personal assistant built on the Solana blockchain, aimed at addressing privacy protection and data sovereignty issues in the AI industry. This document details the economic model of the ARI token within the ARIA ecosystem, including token distribution, utilities, and incentive mechanisms.
+
+### 1.1 Project Vision
+
+The vision of the ARIA project is to create a user-friendly, privacy-first AI assistant that empowers users with complete control over their data through blockchain technology, while incentivizing all participants in the ecosystem through a token economic system.
+
+### 1.2 Tokenomics Design Principles
+
+ARIA's token economics follows these design principles:
+
+- **Value Alignment**: Ensure token holders' interests align with the project's long-term success
+- **Sustainability**: Design an economic model that can be maintained long-term
+- **Fair Distribution**: Ensure fair token distribution among ecosystem participants
+- **Practical Utility**: Tokens should have clear utility value, not just as speculative instruments
+- **Incentive Compatibility**: Incentive mechanisms should encourage behaviors beneficial to the ecosystem
+
+## 2. ARI Token Overview
+
+### 2.1 Basic Information
 
 - **Name**: ARIA Token
 - **Symbol**: ARI
 - **Blockchain**: Solana
-- **Token Standard**: SPL
-- **Total Supply**: 100,000,000 ARI (fixed supply)
+- **Token Standard**: SPL Token
 - **Decimals**: 9
+- **Total Supply**: 100,000,000 ARI (100 million)
+- **Initial Circulating Supply**: 15,000,000 ARI (15 million, 15% of total)
 
-## Token Distribution
+### 2.2 Token Functions
 
-The initial distribution of ARI tokens is designed to align incentives across all stakeholders while ensuring sustainable development and community growth:
+The ARI token is a core component of the ARIA ecosystem with the following functions:
 
-| Allocation | Percentage | Amount (ARI) | Purpose |
-|------------|------------|--------------|---------|
-| User Incentives | 50% | 50,000,000 | Airdrops, rewards, and community incentives |
-| Development Team | 20% | 20,000,000 | Product development, engineering, and operations |
-| Community Governance | 20% | 20,000,000 | DAO treasury and governance initiatives |
-| Marketing & Partnerships | 10% | 10,000,000 | Marketing campaigns and strategic partnerships |
+1. **Access Rights**: Accessing ARIA's advanced features requires holding or staking ARI tokens
+2. **Governance Rights**: Token holders can participate in DAO decision-making
+3. **Incentives**: Users earn ARI tokens by contributing data and feedback
+4. **Transaction Medium**: Transactions within the ecosystem are settled using ARI tokens
+5. **Value Storage**: Tokens can capture value from ecosystem growth
 
-### Vesting Schedule
+## 3. Token Distribution
 
-To ensure long-term alignment and prevent market disruption:
+The total supply of 100,000,000 ARI will be distributed according to the following proportions:
 
-- **User Incentives**: Released over 4 years through various reward mechanisms
-- **Development Team**: 1-year cliff, then linear vesting over 3 years
-- **Community Governance**: 25% at launch, 75% released monthly over 3 years
-- **Marketing & Partnerships**: 20% at launch, 80% released quarterly over 2 years
+| Category | Percentage | Amount | Locking/Release Schedule | Purpose |
+|----------|------------|--------|--------------------------|---------|
+| Community Incentives | 40% | 40,000,000 | Linear release over 4 years | User rewards, data contribution rewards, referral programs |
+| Team & Advisors | 15% | 15,000,000 | 6-month lock, then linear release over 24 months | Incentives for project team and advisors |
+| Ecosystem Fund | 20% | 20,000,000 | Strategic release over 4 years | Ecosystem development, partnerships, marketing campaigns |
+| Early Investors | 10% | 10,000,000 | 6-month lock, then linear release over 18 months | Early project funding support |
+| Liquidity Pool | 10% | 10,000,000 | No lock | Ensure market liquidity |
+| DAO Treasury | 5% | 5,000,000 | Determined by community governance | Long-term governance and strategic decision funding |
 
-## Token Utility
+### 3.1 Initial Circulating Supply
 
-The ARI token serves multiple functions within the ARIA ecosystem:
+Initial circulating supply will include:
+- 10,000,000 ARI (10%) allocated to the liquidity pool
+- 5,000,000 ARI (5%) from the first release of community incentives
 
-### 1. Data Contribution Rewards
+Initial market cap and pricing will be based on principles of reasonable valuation and sustainable growth.
 
-Users can earn ARI tokens by contributing anonymized data to improve the ARIA AI system. The value of rewards depends on:
-- Volume of data contributed
-- Quality and uniqueness of insights
-- Consistency of participation
+## 4. Token Use Cases and Utility
 
-### 2. Feature Access
+### 4.1 Product Access Rights
 
-ARI tokens unlock premium features and capabilities, including:
-- Advanced AI analysis
-- Enhanced privacy features
-- Priority processing
-- Exclusive insights and recommendations
+ARI tokens will be used for the following product access rights:
 
-Feature access follows a tiered model:
-- **Basic Tier**: Free access with limited capabilities
-- **Standard Tier**: Requires staking 1,000 ARI
-- **Premium Tier**: Requires staking 5,000 ARI
-- **Elite Tier**: Requires staking 25,000 ARI
+| Feature/Service | Pricing Model | Description |
+|-----------------|---------------|-------------|
+| Basic AI Conversation | Free | Limited number of basic conversations per day |
+| Advanced AI Model Access | 10 ARI/month or stake 100 ARI | Access to GPT-4, Claude, and other advanced models |
+| Unlimited Conversations | 30 ARI/month or stake 300 ARI | Unlimited conversations, customized AI assistant |
+| Professional Data Analysis | Pay-per-use | Advanced data analysis and visualization services |
+| Developer API | Billed per API call | Allows developers to integrate ARIA's AI capabilities |
 
-### 3. Governance Rights
+### 4.2 Data Marketplace
 
-ARI token holders can participate in platform governance through:
-- Voting on development priorities
-- Proposing system improvements
-- Determining tokenomic adjustments
-- Allocating community treasury funds
+ARIA will establish a data marketplace where users can choose to share anonymized data to earn ARI tokens:
 
-Voting power is calculated using a square root model to balance influence:
+- Users can control the type, amount, and recipients of shared data
+- Data is priced based on value and quality
+- Algorithms ensure privacy and anonymity of shared data
+- Businesses can use ARI tokens to purchase anonymized datasets
+
+### 4.3 Governance and Voting
+
+ARI holders can participate in the following governance decisions:
+
+- Product roadmap and feature priorities
+- Protocol parameter adjustments
+- Ecosystem fund allocation
+- Token economic model updates
+
+Voting weight is proportional to the number of ARI tokens staked, using a quadratic voting mechanism to prevent whale manipulation.
+
+## 5. User Incentive Mechanisms
+
+### 5.1 Data Contribution Rewards
+
+Users earn ARI tokens through the following means:
+
+| Contribution Type | Reward Range | Quality Factor |
+|-------------------|--------------|----------------|
+| Conversation Data | 0.01-0.1 ARI/conversation | x0.5-x2.0 |
+| Feedback and Ratings | 0.05-0.2 ARI/item | x0.5-x3.0 |
+| Error Reports | 0.5-5.0 ARI/report | Based on severity |
+| Expert Knowledge Contribution | 1.0-10.0 ARI/contribution | Based on value |
+
+Reward calculation formula:
 ```
-Voting Power = √(ARI tokens staked for governance)
+Reward = Base Reward × Quality Factor × Scarcity Coefficient
 ```
 
-### 4. Network Fee Discounts
+### 5.2 Community Contribution Rewards
 
-Using ARI for transaction fees provides discounts on Solana network costs:
-- 10% discount for all ARI holders
-- Up to 50% discount based on staking tier
+| Contribution Type | Reward Method | Description |
+|-------------------|---------------|-------------|
+| Community Support | Community points + ARI | Helping other users solve problems |
+| Content Creation | ARI based on impact | Creating tutorials, articles, etc. |
+| Localization Support | ARI based on translation volume | Helping with global expansion |
+| Code Contribution | ARI based on impact | Contributing code to open-source parts |
 
-## Value Accrual Mechanisms
+### 5.3 Referral Program
 
-The ARI token is designed with multiple value accrual mechanisms:
+Users referring new users to the ARIA ecosystem will receive:
 
-### 1. Buy-Back and Burn
+- First referral: 5 ARI
+- When referred user remains active for 30 days: Additional 10 ARI
+- When referred user purchases premium plan: 20% of subscription value as ARI reward
 
-10% of all premium feature revenue is used to buy back and burn ARI tokens, creating deflationary pressure.
+Multi-level referral program:
+- Level 1 referral: 100% of rewards
+- Level 2 referral: 20% of rewards
+- Level 3 referral: 5% of rewards
 
-### 2. Staking Rewards
+### 5.4 Staking Rewards
 
-Users who stake ARI tokens receive additional benefits:
-- APY rewards from a portion of system revenue
-- Boosted data contribution rewards
-- Enhanced governance rights
+Users staking ARI tokens will receive:
 
-### 3. Utility Demand
+- Additional AI usage rights
+- Governance voting rights
+- Staking rewards (5-15% APY, based on staking duration)
+- Platform fee sharing (proportional distribution of 30% of platform revenue)
 
-As the ARIA userbase grows, demand for ARI increases through:
-- New users acquiring tokens for feature access
-- Existing users upgrading their tier levels
-- Partners integrating with the ARIA ecosystem
+Staking lock period options:
+- Flexible staking: Base yield rate
+- 3-month lock: Base yield rate × 1.2
+- 6-month lock: Base yield rate × 1.5
+- 12-month lock: Base yield rate × 2.0
 
-## Token Launch Strategy
+## 6. Token Release Schedule
 
-The ARI token will launch on pump.fun, following these steps:
+### 6.1 Initial Release
 
-### Phase 1: Pre-Launch (Weeks 1-4)
-- Community building and whitelist collection
-- Marketing campaign and partner announcements
-- Whitepaper and roadmap publication
+- **Date**: Q1 2025
+- **Platform**: pump.fun (Solana ecosystem)
+- **Initial Release Amount**: 15,000,000 ARI (15%)
+- **Initial Supply Distribution**:
+  - Liquidity Pool: 10,000,000 ARI
+  - Community Incentives First Phase: 5,000,000 ARI
 
-### Phase 2: Token Generation Event (Week 5)
-- Initial token generation
-- Distribution to team and early supporters
-- Deployment of staking contracts
+### 6.2 Long-term Release Schedule
 
-### Phase 3: Pump.fun Launch (Week 6)
-- Trading begins on pump.fun
-- Liquidity pool establishment
-- Initial reward programs activation
+![Token Release Curve](https://example.com/token_release_curve.png)
 
-### Phase 4: Ecosystem Expansion (Week 7+)
-- Integration with additional Solana protocols
-- Cross-chain bridges exploration
-- Expansion of utility and governance mechanisms
+| Timepoint | Cumulative Release Percentage | New Circulating Supply | Total Circulating Supply |
+|-----------|-------------------------------|------------------------|--------------------------|
+| Initial (Q1 2025) | 15% | 15,000,000 | 15,000,000 |
+| Q3 2025 | 23% | 8,000,000 | 23,000,000 |
+| Q1 2026 | 35% | 12,000,000 | 35,000,000 |
+| Q3 2026 | 50% | 15,000,000 | 50,000,000 |
+| Q1 2027 | 65% | 15,000,000 | 65,000,000 |
+| Q1 2028 | 85% | 20,000,000 | 85,000,000 |
+| Q1 2029 | 100% | 15,000,000 | 100,000,000 |
 
-## Liquidity Management
+### 6.3 Deflationary Mechanisms
 
-To ensure market stability and token accessibility:
+To create a long-term sustainable token economic model, ARIA implements the following deflationary mechanisms:
 
-- **Initial Liquidity**: 20% of marketing allocation paired with SOL
-- **Liquidity Mining**: Incentives for providing ARI/SOL liquidity
-- **Liquidity Locks**: Team commits to 6-month lock on initial liquidity
-- **Treasury Operations**: DAO treasury may provide additional liquidity during market stress
+- **Token Buyback**: 20% of platform revenue is used for market buyback of ARI
+- **Token Burning**: 50% of bought-back tokens are permanently burned
+- **Service Fee Burning**: 5% of platform usage fees are directly burned
+- **Deflation Cap**: Total supply can be reduced to a minimum of 90 million ARI (10% cap)
 
-## Governance Implementation
+## 7. Community Governance
 
-ARI governance will evolve in stages:
+### 7.1 DAO Structure
 
-### Stage 1: Advisory Governance
-- Token holders can vote on proposals in an advisory capacity
-- Core team maintains final decision authority
+The ARIA DAO will launch 6 months after token release, with the following governance structure:
 
-### Stage 2: Partial DAO
-- Specific decisions transferred to DAO control
-- Multi-sig implementation for treasury management
+- **Core Contributors Committee**: 7 members, responsible for daily execution
+- **Community Council**: 11 elected members, responsible for major decisions
+- **Working Groups**: Focused on specific areas (product, market, finance, etc.)
+- **All Token Holders**: Vote on proposals
 
-### Stage 3: Full DAO
-- Comprehensive on-chain governance
-- Automated execution of approved proposals
-- Core development funded through DAO treasury
+### 7.2 Governance Weight
 
-## Risk Management
+Governance voting rights are calculated based on the following factors:
 
-Several mechanisms mitigate risks to the token economy:
+```
+Voting Power = √(Staked Token Amount) × Activity Coefficient
+```
 
-- **Supply Controls**: Fixed maximum supply prevents inflation
-- **Gradual Decentralization**: Staged approach to governance
-- **Reserve Fund**: 5% of tokens held as contingency reserve
-- **Regular Audits**: Quarterly reports on token metrics and treasury operations
+- **Staked Token Amount**: Number of ARI tokens staked by user
+- **Activity Coefficient**: Calculated based on user activity, range 0.5-2.0
 
-## Conclusion
+Quadratic voting mechanism ensures more decentralized decision-making.
 
-The ARI token forms the backbone of the ARIA ecosystem, aligning incentives between users, developers, and the broader community. Through careful economic design and a phased implementation approach, ARI aims to create a sustainable token economy that delivers value to all participants while enabling the growth of a privacy-focused AI assistant platform.
+### 7.3 Proposal Types
+
+| Proposal Type | Required Support | Minimum Participation | Execution Timelock |
+|---------------|------------------|-----------------------|--------------------|
+| Lightweight Proposals | >50% | >5% | 24 hours |
+| Standard Proposals | >60% | >10% | 48 hours |
+| Core Parameter Proposals | >66% | >20% | 72 hours |
+| Emergency Proposals | >75% | >15% | 6 hours |
+
+## 8. Economic Sustainability
+
+### 8.1 Revenue Model
+
+ARIA project revenue sources include:
+
+- **Subscription Revenue**: Fees for premium features
+- **Data Marketplace Commission**: Data transaction commission (5-10%)
+- **API Call Fees**: Developer API call charges
+- **Enterprise Services**: Customized AI solutions for businesses
+- **Ecosystem Extensions**: Partner integrations and joint marketing activities
+
+### 8.2 Cost Structure
+
+Main costs include:
+
+- **Infrastructure**: AI computing resources, storage, and bandwidth
+- **Model Licensing**: Third-party AI model usage fees
+- **Development & Maintenance**: Technical team development and maintenance costs
+- **Marketing**: User acquisition and brand building
+- **Legal & Compliance**: Legal, privacy, and compliance-related costs
+
+### 8.3 Value Capture Mechanisms
+
+ARI token value is derived from:
+
+- **Usage Demand**: Accessing premium features requires ARI
+- **Governance Value**: Participating in decisions requires staking ARI
+- **Scarcity**: Deflationary mechanisms limit supply growth
+- **Ecosystem Growth**: User and usage growth drives demand
+- **Revenue Sharing**: Staking users receive platform revenue share
+
+## 9. Conclusion
+
+The ARIA token economic model is designed to create a sustainable, incentive-compatible ecosystem that aligns the interests of all participants (users, developers, investors, and project team). Through reasonable token distribution, clear utility value, diversified incentive mechanisms, and transparent governance structure, the ARI token will serve as a bridge connecting AI and blockchain technology, providing users with a privacy-protecting AI assistant.
+
+As the project evolves, the token economic model will be continuously optimized and adjusted through community governance to adapt to market changes and user needs. The ARIA team is committed to maintaining transparency of the economic model, regularly publishing reports, and actively listening to community feedback.
 
 ---
 
-*This tokenomics document is subject to revisions based on market conditions and community feedback. Final implementation details may vary.* 
+**Disclaimer**: This document does not constitute investment advice. Cryptocurrency and token investments carry high risk, and investors should conduct their own research and bear risks. The ARIA team reserves the right to adjust the token economic model based on market conditions and project development. 

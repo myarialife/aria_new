@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400">
+  <!-- Background -->
+  <rect width="500" height="400" fill="white" opacity="0"/>
+  
+  <!-- Sound wave rings - Outer layer -->
+  <circle cx="250" cy="170" r="100" fill="none" stroke="url(#blueGradient)" stroke-width="4" opacity="0.2"/>
+  <circle cx="250" cy="170" r="85" fill="none" stroke="url(#blueGradient)" stroke-width="4" opacity="0.3"/>
+  <circle cx="250" cy="170" r="70" fill="none" stroke="url(#blueGradient)" stroke-width="4" opacity="0.5"/>
+  <circle cx="250" cy="170" r="55" fill="none" stroke="url(#blueGradient)" stroke-width="4" opacity="0.7"/>
+  
+  <!-- Central "A" shape -->
+  <path d="M230 210 L250 130 L270 210 M235 185 L265 185" fill="none" stroke="url(#blueGradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Orange glow point -->
+  <circle cx="205" cy="170" r="8" fill="url(#orangeGlow)">
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- "ARIA" text -->
+  <text x="250" y="280" font-family="Arial, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#1A237E">ARIA</text>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="100%" stop-color="#7B1FA2"/>
+    </linearGradient>
+    <radialGradient id="orangeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFA726"/>
+      <stop offset="100%" stop-color="#FF7043"/>
+    </radialGradient>
+  </defs>
+</svg> 

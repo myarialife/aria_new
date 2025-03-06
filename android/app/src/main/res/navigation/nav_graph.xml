@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_assistant">
+
+    <fragment
+        android:id="@+id/navigation_assistant"
+        android:name="com.aria.assistant.ui.assistant.AssistantFragment"
+        android:label="Assistant"
+        tools:layout="@layout/fragment_assistant" />
+
+    <fragment
+        android:id="@+id/navigation_data"
+        android:name="com.aria.assistant.ui.data.DataFragment"
+        android:label="Data Management"
+        tools:layout="@layout/fragment_data" />
+
+    <fragment
+        android:id="@+id/navigation_wallet"
+        android:name="com.aria.assistant.ui.wallet.WalletFragment"
+        android:label="Wallet"
+        tools:layout="@layout/fragment_wallet" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.aria.assistant.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation> 
