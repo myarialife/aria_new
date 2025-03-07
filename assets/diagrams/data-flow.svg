@@ -12,8 +12,8 @@
       <stop offset="0%" style="stop-color:#E65100;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#FFA726;stop-opacity:1" />
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.2"/>
+    <filter id="softShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.1"/>
     </filter>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
@@ -24,49 +24,49 @@
   <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1A237E">ARIA Data Flow</text>
   
   <!-- User -->
-  <circle cx="90" cy="120" r="40" fill="#E8EAF6" stroke="url(#gradBlue)" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="90" cy="120" r="40" fill="#E8EAF6" stroke="url(#gradBlue)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="90" y="120" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1A237E">User</text>
   
   <!-- User Device -->
-  <rect x="200" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="200" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="270" y="125" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1A237E">User Device</text>
   
   <!-- ARIA App -->
-  <rect x="400" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="400" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="470" y="125" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1A237E">ARIA App</text>
   
   <!-- Backend API -->
-  <rect x="600" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="600" y="80" width="140" height="80" rx="10" ry="10" fill="white" stroke="url(#gradBlue)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="670" y="125" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1A237E">Backend API</text>
   
   <!-- Authentication -->
-  <rect x="200" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="200" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="270" y="255" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#004D40">Authentication</text>
   
   <!-- Data Processing -->
-  <rect x="400" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="400" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="470" y="255" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#004D40">Data Processing</text>
   
   <!-- Data Encryption -->
-  <rect x="600" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="600" y="220" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="670" y="255" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#004D40">Data Encryption</text>
   
   <!-- Model Selection -->
-  <path d="M 400,340 L 470,300 L 540,340 L 470,380 Z" fill="white" stroke="url(#gradOrange)" stroke-width="3" filter="url(#shadow)"/>
+  <path d="M 400,340 L 470,300 L 540,340 L 470,380 Z" fill="white" stroke="url(#gradOrange)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="470" y="345" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#E65100">Model Selection</text>
   
   <!-- AI Models -->
-  <rect x="200" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="200" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#softShadow)"/>
   <text x="270" y="435" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#673AB7">OpenAI</text>
   
-  <rect x="400" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="400" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#softShadow)"/>
   <text x="470" y="435" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#673AB7">DeepSeek</text>
   
-  <rect x="600" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="600" y="400" width="140" height="60" rx="30" ry="30" fill="white" stroke="#673AB7" stroke-width="3" filter="url(#softShadow)"/>
   <text x="670" y="435" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#673AB7">Claude</text>
   
   <!-- Response Processing -->
-  <rect x="400" y="500" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="400" y="500" width="140" height="60" rx="10" ry="10" fill="white" stroke="url(#gradGreen)" stroke-width="3" filter="url(#softShadow)"/>
   <text x="470" y="535" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#004D40">Response Processing</text>
   
   <!-- Connection arrows -->

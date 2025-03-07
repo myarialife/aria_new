@@ -16,73 +16,72 @@
       <stop offset="0%" style="stop-color:#536DFE;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#3949AB;stop-opacity:1" />
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.2"/>
+    <filter id="softShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.1"/>
     </filter>
-    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="url(#gradMain)"/>
-    </marker>
-    <marker id="arrowOpenAI" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#10A37F"/>
-    </marker>
-    <marker id="arrowDeepSeek" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
-    </marker>
-    <marker id="arrowAnthropic" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#536DFE"/>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
     </marker>
   </defs>
   
   <!-- Title -->
   <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1A237E">ARIA AI Models Integration</text>
   
-  <!-- Central ARIA System -->
-  <rect x="325" y="200" width="150" height="100" rx="10" ry="10" fill="white" stroke="url(#gradMain)" stroke-width="3" filter="url(#shadow)"/>
-  <text x="400" y="235" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1A237E">ARIA</text>
-  <text x="400" y="265" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1A237E">Model Selection</text>
-  <text x="400" y="285" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1A237E">Engine</text>
+  <!-- Main ARIA system -->
+  <rect x="350" y="80" width="100" height="100" rx="50" ry="50" fill="url(#gradMain)" filter="url(#softShadow)"/>
+  <text x="400" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">ARIA</text>
   
-  <!-- OpenAI Integration -->
-  <rect x="100" y="100" width="150" height="100" rx="10" ry="10" fill="white" stroke="url(#gradOpenAI)" stroke-width="3" filter="url(#shadow)"/>
-  <text x="175" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#10A37F">OpenAI</text>
-  <text x="175" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#10A37F">GPT-4 Turbo</text>
-  <text x="175" y="185" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#10A37F">API</text>
+  <!-- OpenAI -->
+  <rect x="100" y="200" width="150" height="80" rx="10" ry="10" fill="url(#gradOpenAI)" filter="url(#softShadow)"/>
+  <text x="175" y="245" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">OpenAI</text>
   
-  <!-- DeepSeek Integration -->
-  <rect x="550" y="100" width="150" height="100" rx="10" ry="10" fill="white" stroke="url(#gradDeepSeek)" stroke-width="3" filter="url(#shadow)"/>
-  <text x="625" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#FF5722">DeepSeek</text>
-  <text x="625" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#FF5722">DeepSeek-Coder</text>
-  <text x="625" y="185" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#FF5722">API</text>
+  <!-- DeepSeek -->
+  <rect x="325" y="200" width="150" height="80" rx="10" ry="10" fill="url(#gradDeepSeek)" filter="url(#softShadow)"/>
+  <text x="400" y="245" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">DeepSeek</text>
   
-  <!-- Anthropic Integration -->
-  <rect x="325" y="350" width="150" height="100" rx="10" ry="10" fill="white" stroke="url(#gradAnthropic)" stroke-width="3" filter="url(#shadow)"/>
-  <text x="400" y="385" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#536DFE">Anthropic</text>
-  <text x="400" y="415" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#536DFE">Claude 3</text>
-  <text x="400" y="435" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#536DFE">API</text>
+  <!-- Anthropic -->
+  <rect x="550" y="200" width="150" height="80" rx="10" ry="10" fill="url(#gradAnthropic)" filter="url(#softShadow)"/>
+  <text x="625" y="245" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Anthropic</text>
   
-  <!-- Connection lines -->
-  <!-- ARIA to OpenAI -->
-  <path d="M 325,225 C 275,225 250,175 200,150" stroke="url(#gradOpenAI)" stroke-width="2" marker-end="url(#arrowOpenAI)" fill="none"/>
-  <path d="M 200,175 C 250,200 275,250 325,250" stroke="url(#gradOpenAI)" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
-  
-  <!-- ARIA to DeepSeek -->
-  <path d="M 475,225 C 525,225 550,175 600,150" stroke="url(#gradDeepSeek)" stroke-width="2" marker-end="url(#arrowDeepSeek)" fill="none"/>
-  <path d="M 600,175 C 550,200 525,250 475,250" stroke="url(#gradDeepSeek)" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
-  
-  <!-- ARIA to Anthropic -->
-  <path d="M 400,300 C 400,325 380,325 380,350" stroke="url(#gradAnthropic)" stroke-width="2" marker-end="url(#arrowAnthropic)" fill="none"/>
-  <path d="M 420,350 C 420,325 400,325 400,300" stroke="url(#gradAnthropic)" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
+  <!-- Connection Lines -->
+  <path d="M 375,180 L 175,200" stroke="#10A37F" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <path d="M 400,180 L 400,200" stroke="#FF5722" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <path d="M 425,180 L 625,200" stroke="#536DFE" stroke-width="3" marker-end="url(#arrowhead)"/>
   
   <!-- API Examples -->
-  <rect x="50" y="20" width="250" height="60" rx="5" ry="5" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1"/>
-  <text x="175" y="40" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">{model: "gpt-4-turbo", max_tokens: 2048,</text>
-  <text x="175" y="55" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">temperature: 0.7, messages: [...]}</text>
+  <rect x="50" y="320" width="250" height="150" rx="10" ry="10" fill="white" stroke="#10A37F" stroke-width="2" filter="url(#softShadow)"/>
+  <text x="175" y="345" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#10A37F">OpenAI API Example</text>
+  <rect x="60" y="355" width="230" height="105" rx="5" ry="5" fill="#F5F5F5"/>
+  <text x="70" y="375" font-family="Courier New, monospace" font-size="12" text-anchor="start" fill="#333">
+    <tspan x="70" dy="0">const response = await openai</tspan>
+    <tspan x="70" dy="16">.chat.completions.create({</tspan>
+    <tspan x="70" dy="16">  model: "gpt-4-turbo",</tspan>
+    <tspan x="70" dy="16">  messages: messages,</tspan>
+    <tspan x="70" dy="16">  temperature: 0.7</tspan>
+    <tspan x="70" dy="16">});</tspan>
+  </text>
   
-  <rect x="500" y="20" width="250" height="60" rx="5" ry="5" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1"/>
-  <text x="625" y="40" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">{model: "deepseek-coder", max_tokens: 1024,</text>
-  <text x="625" y="55" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">temperature: 0.5, messages: [...]}</text>
+  <rect x="275" y="320" width="250" height="150" rx="10" ry="10" fill="white" stroke="#FF5722" stroke-width="2" filter="url(#softShadow)"/>
+  <text x="400" y="345" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#FF5722">DeepSeek API Example</text>
+  <rect x="285" y="355" width="230" height="105" rx="5" ry="5" fill="#F5F5F5"/>
+  <text x="295" y="375" font-family="Courier New, monospace" font-size="12" text-anchor="start" fill="#333">
+    <tspan x="295" dy="0">const response = await axios</tspan>
+    <tspan x="295" dy="16">.post('api.deepseek.com', {</tspan>
+    <tspan x="295" dy="16">  model: "deepseek-coder",</tspan>
+    <tspan x="295" dy="16">  messages: messages,</tspan>
+    <tspan x="295" dy="16">  temperature: 0.5</tspan>
+    <tspan x="295" dy="16">});</tspan>
+  </text>
   
-  <rect x="275" y="470" width="250" height="60" rx="5" ry="5" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1"/>
-  <text x="400" y="490" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">{model: "claude-3-opus", max_tokens: 4096,</text>
-  <text x="400" y="505" font-family="Courier New, monospace" font-size="10" text-anchor="middle" fill="#000">temperature: 0.3, messages: [...]}</text>
+  <rect x="500" y="320" width="250" height="150" rx="10" ry="10" fill="white" stroke="#536DFE" stroke-width="2" filter="url(#softShadow)"/>
+  <text x="625" y="345" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#536DFE">Claude API Example</text>
+  <rect x="510" y="355" width="230" height="105" rx="5" ry="5" fill="#F5F5F5"/>
+  <text x="520" y="375" font-family="Courier New, monospace" font-size="12" text-anchor="start" fill="#333">
+    <tspan x="520" dy="0">const response = await client</tspan>
+    <tspan x="520" dy="16">.messages.create({</tspan>
+    <tspan x="520" dy="16">  model: "claude-3-opus",</tspan>
+    <tspan x="520" dy="16">  system: instructions,</tspan>
+    <tspan x="520" dy="16">  messages: formattedMsgs</tspan>
+    <tspan x="520" dy="16">});</tspan>
+  </text>
 </svg> 
